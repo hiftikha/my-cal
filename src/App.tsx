@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
-import "./styling/TimeDisplay.css";
 import PopUpDialog from "./components/PopUpDialog";
 import TimeDisplay from "./components/TimeDisplay";
-import { DisplayType, Meeting, ScheduleData, scheduleTest } from "./types";
+import "./styling/TimeDisplay.css";
+import { DisplayType, ScheduleData, scheduleTest } from "./types";
 import { convertToTimeZone, subtractBusyTimes } from "./utils";
 
 function App() {
   // Component state
-  const [scheduleData, setScheduleData] = useState<ScheduleData>(scheduleTest);
+  const [scheduleData, setScheduleData] = useState<ScheduleData>(scheduleTest); 
   const [days, setDays] = useState<string[]>([]);
   const [selectedDay, setSelectedDay] = useState<string>("");
   const [availableSlots, setAvailableSlots] = useState<
@@ -22,6 +22,7 @@ function App() {
     setSelectedDay(day);
   };
 
+  // Fetch the schedule data from the API and convert the date ranges to the user's time zone
   useEffect(() => {
     const fetchScheduleData = async () => {
       try {
@@ -61,6 +62,9 @@ function App() {
 
     fetchScheduleData();
   }, []);
+
+
+  // Update the available slots when the selected day changes
 
   useEffect(() => {
     const uniqueFormattedDates = new Set<string>();

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const PopUpDialog: React.FC<Props> = ({ onViewClick }) => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false); // connect dialog to booking a slot
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [metadata, setMetadata] = useState("");

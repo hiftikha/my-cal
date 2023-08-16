@@ -28,7 +28,7 @@ axios
     console.error("Error:", error.message);
   });
 
-// write a function to make the post request
+// write a function to make the post request for a booking
 const makePostRequest = async (time: Date, body: BookingRequest) => {
   try {
     const response = await axios.post(url, body);
