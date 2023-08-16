@@ -15,7 +15,7 @@ function App() {
     { start: Date; end: Date }[]
   >([]);
 
-  const bookSlot = () => {};
+  // const bookSlot = () => {};
 
   const handleButtonClick = (day: string) => {
     setSelectedDay(day);

@@ -25,6 +25,26 @@ export type ScheduleData = {
     currentSeats: number | null;
 }
 
+export type BookingResponse = {
+    name: string;
+    email: string;
+    location?: string;
+    metadata: {};
+}
+
+export type BookingRequest = {
+    eventTypeId: 1,
+    start: string;
+    responses: {
+      name: "Hello Hello",
+      email: "hello@gmail.com",
+      metadata: {},
+      location: "Calcom HQ"
+    },
+    timeZone: string;
+    language: string;
+}
+
 export const scheduleTest: ScheduleData = {
     busy: [
         {
