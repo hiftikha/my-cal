@@ -1,5 +1,5 @@
 import React from 'react';
-import "./TimeDisplay.css";
+import "../styling/TimeDisplay.css";
 
 interface TimeDisplayProps {
   start: Date;
@@ -11,6 +11,11 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ start, end }) => {
 
   const dateObject = new Date(start);
 
+  const handleSlotClick = () => {
+    console.log("clicked");
+    alert("Appointment booked!");
+  };
+
   // Formatting options
   const options = {
     hour: "2-digit" as const,
@@ -21,7 +26,7 @@ const TimeDisplay: React.FC<TimeDisplayProps> = ({ start, end }) => {
   const formattedTime = dateObject.toLocaleTimeString('en-US', options);
 
   return (
-    <div className="time-container">
+    <div className="time-container" onClick={handleSlotClick}>
       <p className="time">{formattedTime}</p>
     </div>
   );

@@ -1,7 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
-import TimeDisplay from "./TimeDisplay";
+import PopUpDialog from "./components/PopUpDialog";
+import TimeDisplay from "./components/TimeDisplay";
 import { Meeting, ScheduleData, scheduleTest } from "./types";
 import { convertToTimeZone, subtractBusyTimes } from "./utils";
 
@@ -88,6 +89,9 @@ function App() {
 
   return (
     <div className="container">
+      <PopUpDialog
+        onViewClick={() => {}}
+       />
       <h2 className="headerText">Haroon Iftikhar</h2>
       <div className="columnContainer">
         <ul className="column">
@@ -96,8 +100,7 @@ function App() {
             <div key={index}>
               <button
                 className="button"
-                onClick={() => handleButtonClick(item)}
-              >
+                onClick={() => handleButtonClick(item)}>
                 {item}
               </button>
             </div>
