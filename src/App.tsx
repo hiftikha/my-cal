@@ -7,6 +7,7 @@ import "./styling/TimeDisplay.css";
 import { DisplayType, ScheduleData, scheduleTest } from "./types";
 import { convertToTimeZone, subtractBusyTimes } from "./utils";
 import JoyousO from "./assets/joyous-o.png";
+import { from, until } from "./constants";
 
 function App() {
   // Component state
@@ -28,8 +29,8 @@ function App() {
     const fetchScheduleData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3002/v1/availability?apiKey=cal_e2b15312ac83d3e652dc6b3c57b44c73&username=hiftikha&dateFrom=2023-08-15&dateTo=2023-08-25"
-        );
+          `http://localhost:3002/v1/availability?apiKey=cal_e2b15312ac83d3e652dc6b3c57b44c73&username=hiftikha&dateFrom=${from}&dateTo=${until}`
+        );        
 
         const responseData: ScheduleData = response.data;
         const timeZone = responseData.timeZone;

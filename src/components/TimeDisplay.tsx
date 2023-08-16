@@ -10,7 +10,7 @@ interface TimeDisplayProps {
 
 const TimeDisplay: React.FC<TimeDisplayProps> = ({ start, type }) => {
 
-  const options = type == DisplayType.date ? dateOptions : timeOptions;
+  const options = timeOptions;
   const dateObject = new Date(start);
 
   const handleSlotClick = () => {
