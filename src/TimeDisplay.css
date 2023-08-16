@@ -1,0 +1,18 @@
+.time-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f7f7f7;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .time-container:hover {
+    background-color: #e0e0e0; 
+  }
+  
+  .time {
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+  

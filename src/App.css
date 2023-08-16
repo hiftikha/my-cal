@@ -36,3 +36,46 @@
     transform: rotate(360deg);
   }
 }
+
+.container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.headerText {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.columnContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.column {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 10px;
+  list-style: none;
+}
+
+.footerText {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.item {
+  padding: 10px;
+}
+
+.button {
+  height: 200;
+  width: 500;
+  padding: '10px 20px';
+  fontSize: '16px';
+  borderRadius: '10px';
+  backgroundColor: 'blue';
+  color: 'white';
+  border: 'none';
+  cursor: 'pointer';
+}
