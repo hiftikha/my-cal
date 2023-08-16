@@ -6,6 +6,7 @@
 2. Parses the date ranges and time windows per user's specific timezone
 3. Displays when no slots are available for the day
 4. Only shows available slots in the future
+5. Easter Egg! (:
 
 ## To-Do
 

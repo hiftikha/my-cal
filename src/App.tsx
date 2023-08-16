@@ -6,10 +6,11 @@ import TimeDisplay from "./components/TimeDisplay";
 import "./styling/TimeDisplay.css";
 import { DisplayType, ScheduleData, scheduleTest } from "./types";
 import { convertToTimeZone, subtractBusyTimes } from "./utils";
+import JoyousO from "./assets/joyous-o.png";
 
 function App() {
   // Component state
-  const [scheduleData, setScheduleData] = useState<ScheduleData>(scheduleTest); 
+  const [scheduleData, setScheduleData] = useState<ScheduleData>(scheduleTest);
   const [days, setDays] = useState<string[]>([]);
   const [selectedDay, setSelectedDay] = useState<string>("");
   const [availableSlots, setAvailableSlots] = useState<
@@ -63,7 +64,6 @@ function App() {
     fetchScheduleData();
   }, []);
 
-
   // Update the available slots when the selected day changes
 
   useEffect(() => {
@@ -82,7 +82,7 @@ function App() {
       }
     });
 
-    const daysArray: string[] = Array.from(uniqueFormattedDates);
+    const daysArray: string[] = Array.from(uniqueFormattedDates).sort();
     setDays(daysArray);
 
     if (scheduleData) {
@@ -99,14 +99,22 @@ function App() {
 
   return (
     <div className="container">
-      <PopUpDialog onViewClick={() => {}} />
+      {/* <PopUpDialog onViewClick={() => {}} /> */}
+      <div className="frameLayout">
+        <div className="leftEye"></div>
+        <div className="rightEye"></div>
+        <img className="joyousO" src={JoyousO} alt="logo" />
+      </div>
       <h2 className="headerText">Haroon Iftikhar</h2>
       <div className="columnContainer">
         <ul className="column">
           <h2 className="headerText">Pick a Day</h2>
           {days?.map((item, index) => (
             <div key={index}>
-              <div className="time-container" onClick={() => handleButtonClick(item)}>
+              <div
+                className="time-container"
+                onClick={() => handleButtonClick(item)}
+              >
                 <p className="time">{item}</p>
               </div>
             </div>

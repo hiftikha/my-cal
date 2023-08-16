@@ -1,3 +1,6 @@
+:root {
+  --joyous-color: #ab89e1;
+}
 .App {
   text-align: center;
 }
@@ -78,4 +81,67 @@
   color: 'white';
   border: 'none';
   cursor: 'pointer';
+}
+
+.joyousO {
+  display: block;
+  width: 100px;
+  
+}
+
+.joyousO:hover {
+  width: 200px;
+  transition: width 2s;
+}
+
+@keyframes smiley {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(60deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.frameLayout {
+  position: relative;
+  display: inline-block;
+}
+
+.frameLayout:hover {
+  animation: smiley 2s linear infinite;
+}
+
+.frameLayout:hover .leftEye {
+  opacity: 100%;
+  transform: scale(1.5) translateY(400%);
+  transition: 2s;
+}
+
+.frameLayout:hover .rightEye {
+  opacity: 100%;
+  transform: scale(1.5) translateY(400%);
+  transition: 2s;
+}
+
+.leftEye, .rightEye {
+  width: 10px;
+  height: 10px;
+  opacity: 0%;
+  background-color: var(--joyous-color);
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  transform: translateY(300%); 
+}
+
+.leftEye {
+  left: calc(100% - 55px); 
+}
+
+.rightEye {
+  left: calc(50% + 5px); 
 }
