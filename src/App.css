@@ -72,9 +72,9 @@
   height: 200;
   width: 500;
   padding: '10px 20px';
-  fontSize: '16px';
-  borderRadius: '10px';
-  backgroundColor: 'blue';
+  font-size: '22px';
+  border-radius: '10px';
+  background-color: 'blue';
   color: 'white';
   border: 'none';
   cursor: 'pointer';

@@ -4,6 +4,8 @@
 
 1. Displays the next 10 days on the left, with the respective available meeting slots for booking on the right
 2. Parses the date ranges and time windows per user's specific timezone
+3. Displays when no slots are available for the day
+4. Only shows available slots in the future
 
 ## To-Do
 
@@ -11,6 +13,8 @@
 2. Separate hooks out of components for separation of concerns
 3. Error handling in a more graceful manner, and bubbling the error up the stack where necessary instead of catching right where it occurs
 4. Memoize the time slots so that we're not recomputing them for the same date range
+5. Build custom components for code quality and code readability
+6. Reuse `TimeDisplay` component to render both the date and the time appropriately depending on the type of `DisplayType` enum 
 
 ## Available Scripts
 

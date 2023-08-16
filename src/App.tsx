@@ -1,9 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
+import "./styling/TimeDisplay.css";
 import PopUpDialog from "./components/PopUpDialog";
 import TimeDisplay from "./components/TimeDisplay";
-import { Meeting, ScheduleData, scheduleTest } from "./types";
+import { DisplayType, Meeting, ScheduleData, scheduleTest } from "./types";
 import { convertToTimeZone, subtractBusyTimes } from "./utils";
 
 function App() {
@@ -14,8 +15,8 @@ function App() {
   const [availableSlots, setAvailableSlots] = useState<
     { start: Date; end: Date }[]
   >([]);
-
-  // const bookSlot = () => {};
+  const [showNoSlotsDisclaimer, setShowNoSlotsDisclaimer] =
+    useState<boolean>(false);
 
   const handleButtonClick = (day: string) => {
     setSelectedDay(day);
@@ -38,7 +39,6 @@ function App() {
             end: convertToTimeZone(new Date(busyTime.end), timeZone),
           };
         });
-
 
         const convertedDateRanges = responseData.dateRanges.map((dateRange) => {
           return {
@@ -83,34 +83,45 @@ function App() {
 
     if (scheduleData) {
       const slots = subtractBusyTimes(scheduleData);
-      setAvailableSlots(slots.filter((slot) => slot.start.getDate() === new Date(selectedDay).getDate()));
+      const available = slots.filter(
+        (slot) => slot.start.getDate() === new Date(selectedDay).getDate()
+      );
+      setAvailableSlots(available);
+      available.length === 0
+        ? setShowNoSlotsDisclaimer(true)
+        : setShowNoSlotsDisclaimer(false);
     }
   }, [selectedDay, scheduleData]);
 
   return (
     <div className="container">
-      <PopUpDialog
-        onViewClick={() => {}}
-       />
+      <PopUpDialog onViewClick={() => {}} />
       <h2 className="headerText">Haroon Iftikhar</h2>
       <div className="columnContainer">
         <ul className="column">
           <h2 className="headerText">Pick a Day</h2>
           {days?.map((item, index) => (
             <div key={index}>
-              <button
-                className="button"
-                onClick={() => handleButtonClick(item)}>
-                {item}
-              </button>
+              <div className="time-container" onClick={() => handleButtonClick(item)}>
+                <p className="time">{item}</p>
+              </div>
             </div>
           ))}
         </ul>
         <ul className="column">
           <h2 className="headerText">{selectedDay}</h2>
-          {availableSlots.map((item, index) => (
-            <TimeDisplay key={index} start={item.start} end={item.end} />
-          ))}
+          {!showNoSlotsDisclaimer &&
+            selectedDay &&
+            availableSlots.map((item, index) => (
+              <TimeDisplay
+                key={index}
+                start={item.start}
+                type={DisplayType.time}
+              />
+            ))}
+          {showNoSlotsDisclaimer && selectedDay && (
+            <p className="footerText">No available slots for this day</p>
+          )}
         </ul>
       </div>
       <p className="footerText">{scheduleData?.timeZone}</p>

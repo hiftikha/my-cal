@@ -1,26 +1,21 @@
 import React from 'react';
+import { dateOptions, timeOptions } from '../constants';
 import "../styling/TimeDisplay.css";
+import { DisplayType } from '../types';
 
 interface TimeDisplayProps {
   start: Date;
-  end: Date;
+  type: DisplayType;
 }
 
-const TimeDisplay: React.FC<TimeDisplayProps> = ({ start, end }) => {
+const TimeDisplay: React.FC<TimeDisplayProps> = ({ start, type }) => {
 
-
+  const options = type == DisplayType.date ? dateOptions : timeOptions;
   const dateObject = new Date(start);
 
   const handleSlotClick = () => {
     console.log("clicked");
     alert("Appointment booked!");
-  };
-
-  // Formatting options
-  const options = {
-    hour: "2-digit" as const,
-    minute: "2-digit" as const,
-    hour12: true
   };
   
   const formattedTime = dateObject.toLocaleTimeString('en-US', options);

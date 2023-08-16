@@ -33,16 +33,16 @@ export type BookingResponse = {
 }
 
 export type BookingRequest = {
-    eventTypeId: 1,
+    eventTypeId: number,
     start: string;
-    responses: {
-      name: "Hello Hello",
-      email: "hello@gmail.com",
-      metadata: {},
-      location: "Calcom HQ"
-    },
+    responses: BookingResponse;
     timeZone: string;
     language: string;
+}
+
+export enum DisplayType {
+    time = "twelveHour",
+    date = "Month DD, YYYY",
 }
 
 export const scheduleTest: ScheduleData = {
