@@ -10,9 +10,11 @@
 1. Auutomatically filters days with no availability set
 2. Displays the next 10 days on the left, with the respective available meeting slots for booking on the right
 3. Parses the date ranges and time windows per user's specific timezone
-4. Displays when no slots are available for the day
-5. Only shows available slots in the future
-6. Can you find the easter Egg?! (:
+4. Automatically reloads the available booking slots after new meeting is booked
+5. Displays when no slots are available for the day
+6. Only shows available slots in the future
+7. Book appointments using the default metadata present in `postBooking`
+8. Can you find the easter Egg?! (:
 
 ## To-Do
 
@@ -22,7 +24,8 @@
 4. Memoize the time slots so that we're not recomputing them for the same date range
 5. Build custom components for code quality and code readability
 6. Reuse `TimeDisplay` component to render both the date and the time appropriately depending on the type of `DisplayType` enum
-7. Utilize `utils` for any repetitive type and object mappings and transformations 
+7. Utilize `utils` for any repetitive type and object mappings and transformations
+8. Use pop-up display to garner metadata for the meeting to be booked
 
 ## Available Scripts
 

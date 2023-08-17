@@ -29,13 +29,14 @@ export type BookingResponse = {
     name: string;
     email: string;
     location?: string;
-    metadata: {};
 }
 
 export type BookingRequest = {
     eventTypeId: number,
     start: string;
     responses: BookingResponse;
+    username: string;
+    metadata: {};
     timeZone: string;
     language: string;
 }

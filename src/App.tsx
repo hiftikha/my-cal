@@ -1,16 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./App.css";
-import PopUpDialog from "./components/PopUpDialog";
+import JoyousO from "./assets/joyous-o.png";
 import TimeDisplay from "./components/TimeDisplay";
+import { apiKey, from, until } from "./constants";
 import "./styling/TimeDisplay.css";
 import { DisplayType, ScheduleData, scheduleTest } from "./types";
 import { convertToTimeZone, subtractBusyTimes } from "./utils";
-import JoyousO from "./assets/joyous-o.png";
-import { from, until } from "./constants";
 
 function App() {
   // Component state
+  const [newAppointment, setNewAppointment] = useState<boolean>(false);
   const [scheduleData, setScheduleData] = useState<ScheduleData>(scheduleTest);
   const [days, setDays] = useState<string[]>([]);
   const [selectedDay, setSelectedDay] = useState<string>("");
@@ -29,8 +29,8 @@ function App() {
     const fetchScheduleData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3002/v1/availability?apiKey=cal_e2b15312ac83d3e652dc6b3c57b44c73&username=hiftikha&dateFrom=${from}&dateTo=${until}`
-        );        
+          `http://localhost:3002/v1/availability?apiKey=${apiKey}&username=hiftikha&dateFrom=${from}&dateTo=${until}`
+        );
 
         const responseData: ScheduleData = response.data;
         const timeZone = responseData.timeZone;
@@ -63,7 +63,7 @@ function App() {
     };
 
     fetchScheduleData();
-  }, []);
+  }, [newAppointment]);
 
   // Update the available slots when the selected day changes
 
@@ -130,6 +130,7 @@ function App() {
                 key={index}
                 start={item.start}
                 type={DisplayType.time}
+                setNewAppointment={setNewAppointment}
               />
             ))}
           {showNoSlotsDisclaimer && selectedDay && (
